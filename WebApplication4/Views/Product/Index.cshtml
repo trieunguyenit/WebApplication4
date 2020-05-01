@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+index
+@*Bảng 3 cột, mã sp, tên sp, các hành động*@
+
+<table border="1">
+    <tr>
+        <th>Mã sản phẩm</th>
+        <th>Tên sản phẩm</th>
+        <th></th>
+
+    </tr>
+    @foreach (var i in Model)
+    {
+        <tr>
+            <td>@i.ProductID</td>
+            <td>@i.ProductName</td>
+            <td>
+                @Html.ActionLink("Chi tiết", "Details", new { id = i.ProductID })|
+                @Html.ActionLink("Sửa", "Edit", new { id = i.ProductID })|
+                @Html.ActionLink("Xóa", "Delete", new { id = i.ProductID })
+
+
+            </td>
+            @*html link tạo link đến trang khác sửa, xóa, chi tiết *@
+
+
+        </tr>
+    }
+
+</table>
+@*thêm link thêm sp*@
+@Html.ActionLink("Thêm", "Create","SanPham")
+
+
